@@ -46,6 +46,7 @@ class BitArray{
 
    int setValue(int value){
         fValue = value;
+        fCount = floor(log2(this->fValue))+1; //return the number of bits
    }
 
    int getValue(){
@@ -53,8 +54,7 @@ class BitArray{
    }
 
    BitArray(int value){
-     fValue = value;
-     fCount = floor(log2(this->fValue))+1; //return the number of bits
+     this->setValue(value);
    }
 
 
