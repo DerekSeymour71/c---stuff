@@ -44,13 +44,17 @@ class BitArray{
    }
 
 
-   int setValue(int value){
+   void setValue(int value){
         fValue = value;
         fCount = floor(log2(this->fValue))+1; //return the number of bits
    }
 
    int getValue(){
        return this->fValue;
+   }
+  
+   void setMask(int mask){
+       fMask = mask;
    }
 
    BitArray(int value){
