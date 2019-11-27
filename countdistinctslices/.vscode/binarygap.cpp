@@ -138,7 +138,26 @@ int main()
      /* bits.forEach([](bool on) {   --stuck here with lamba i can't get my head around the syntax
          
         }); */
+     
+     
+     if you look at the sort it has a header....
+       
+       template<typename _RandomAccessIterator>
+    inline void
+    sort(_RandomAccessIterator __first, _RandomAccessIterator __last)
+    {
+      // concept requirements
+      __glibcxx_function_requires(_Mutable_RandomAccessIteratorConcept<
+	    _RandomAccessIterator>)
+      __glibcxx_function_requires(_LessThanComparableConcept<
+	    typename iterator_traits<_RandomAccessIterator>::value_type>)
+      __glibcxx_requires_valid_range(__first, __last);
+      __glibcxx_requires_irreflexive(__first, __last);
 
+      std::__sort(__first, __last, __gnu_cxx::__ops::__iter_less_iter());
+    }
+
+   wtf?!
 
       //output("bit 6:" + to_string(bits.getOn(6)));  exception idx out of bound
        
