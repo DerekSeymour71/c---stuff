@@ -1,6 +1,9 @@
 //note: a learning unit...I'm not recommending using classes here for simple things, I just want to know how classes work in C++
 //how to have events, etc, and using a bit array seemed like a nice way to keep me interested.
 
+Perfection is achieved, not when there is nothing more to add, but when there is nothing left to take away.
+ - Antoine de Saint-Exupery
+
 
 
 #include <iostream> /* console stuff */
