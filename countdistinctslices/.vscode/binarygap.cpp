@@ -1,11 +1,6 @@
 //note: a learning unit...I'm not recommending using classes here for simple things, I just want to know how classes work in C++
 //how to have events, etc, and using a bit array seemed like a nice way to keep me interested.
 
-Perfection is achieved, not when there is nothing more to add, but when there is nothing left to take away.
- - Antoine de Saint-Exupery
-
-
-
 #include <iostream> /* console stuff */
 #include <cstdlib>  /* standard lib */
 #include <string>
@@ -28,14 +23,15 @@ void output(string str){
   cout<<str << endl;
 }
 
-typedef bitloop(bool bit);
-
+//typedef void bitloop(bool bit, int idx);
+typedef const std::function<void (bool)> bitloop;
 
 class BitArray{
    
    private:
       int fValue;
       int fCount;
+      int fMask;
 
 
    protected:
@@ -43,11 +39,22 @@ class BitArray{
        return (idx <= this->fCount); 
      }
 
+     
+
    public:
 
+
+   //set mask  
+
+   void setMask(int mask){
+       fMask = mask;
+   }
+
+
+
    void forEach(const bitloop loop){
-     for (int i = 0; i<=fCount;i++){
-        loop(this->isSet(i));  
+     for (int i = 0; i<=fCount-1;i++){
+        loop(this->isSet(i),i);  
      }   
    }
 
@@ -59,10 +66,6 @@ class BitArray{
 
    int getValue(){
        return this->fValue;
-   }
-  
-   void setMask(int mask){
-       fMask = mask;
    }
 
    BitArray(int value){
@@ -84,13 +87,13 @@ class BitArray{
          throw "idx out of bounds";
      }
    }
- 
+    
     
 
  };
  
  
-//using a class instead of this solution. (to help me with classes and bitshifting)
+//using a class instead of this solution. (to help me with classes, events, also some bitshifting techniques)
 int binarygap(int N) {
 
     
@@ -126,13 +129,9 @@ int binarygap(int N) {
 }
  
  
-
-
-//          16  8  4  2  1 
-//           1  1  1  1  1 
 int main()
 {
-   //output("binary gap:" + to_string(binarygap(10)));   
+   
    try
    {
       BitArray bits(20);
@@ -143,29 +142,18 @@ int main()
       output("bit 3:" + to_string(bits.isSet(3))); 
 
 
-     /* bits.forEach([](bool on) {   --stuck here with lamba i can't get my head around the syntax
+     /* bits.forEach([](bool on, int i){
+        output("index" + to_string(i) + ":" + to_string(on));  
+      }); */
+
+
+      int count = 0;
+      bits.forEach([&](bool on, int i){ 
+          output("index" + to_string(count));
          
-        }); */
-     
-     
-     if you look at the sort it has a header....
-       
-       template<typename _RandomAccessIterator>
-    inline void
-    sort(_RandomAccessIterator __first, _RandomAccessIterator __last)
-    {
-      // concept requirements
-      __glibcxx_function_requires(_Mutable_RandomAccessIteratorConcept<
-	    _RandomAccessIterator>)
-      __glibcxx_function_requires(_LessThanComparableConcept<
-	    typename iterator_traits<_RandomAccessIterator>::value_type>)
-      __glibcxx_requires_valid_range(__first, __last);
-      __glibcxx_requires_irreflexive(__first, __last);
 
-      std::__sort(__first, __last, __gnu_cxx::__ops::__iter_less_iter());
-    }
+      });
 
-   wtf?!
 
       //output("bit 6:" + to_string(bits.getOn(6)));  exception idx out of bound
        
@@ -180,8 +168,9 @@ int main()
 
 }  
 
+ 
+   
 
  
-
 
 
