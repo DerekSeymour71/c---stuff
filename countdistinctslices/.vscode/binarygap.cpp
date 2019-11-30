@@ -1,5 +1,12 @@
+//solution to codility binary gap problem, which passed 100% of test cases.
+
+
 //note: a learning unit...I'm not recommending using classes here for simple things, I just want to know how classes work in C++
 //how to have events, etc, and using a bit array seemed like a nice way to keep me interested.
+
+
+
+
 
 #include <iostream> /* console stuff */
 #include <cstdlib>  /* standard lib */
@@ -13,6 +20,7 @@
 #include <ctime>   /* time, baby */
 #include <cmath>   /* numbers, yo */
 #include <assert.h>  /* assertions */
+#include <functional>
 
 
 /* reminder C++ is case sensitive */
@@ -24,7 +32,11 @@ void output(string str){
 }
 
 //typedef void bitloop(bool bit, int idx);
-typedef const std::function<void (bool)> bitloop;
+ 
+typedef const std::function<void(bool, int)> bitloop;
+
+
+
 
 class BitArray{
    
@@ -93,84 +105,39 @@ class BitArray{
  };
  
  
-//using a class instead of this solution. (to help me with classes, events, also some bitshifting techniques)
-int binarygap(int N) {
 
-    
-    /*int numBits = bitCount(N); //return the number of bits
-    
-     
-
-    bool foundOne = false;
-    int maximumGap = 0;
-    int possibleGap = 0;
-     
-    
-    for (int i=0; i<numBits; i++) {
-        // find a 0
-        bit = getBit(N,i);
-        
-        if ( foundOne && ! (isZero(N,i))) {
-            possibleGap++;
-        } else if ((N & (1<<i))) {
-            // If we found a one, set the gap length and reset the
-            // current counter
-            if (foundOne) {
-                if (possibleGap > maximumGap) {
-                    maximumGap = possibleGap;
-                }
-                possibleGap = 0;
-            }
-            foundOne = true;
-        }
-    }
-    
-    return maximumGap; */
-}
- 
- 
-int main()
-{
+int solution(int N) {
+    BitArray bits(N);
+   int score = 0;
+   int runningTotal = 0;
+   bool startbit = false;
    
-   try
-   {
-      BitArray bits(20);
-      output("Count:" + to_string(bits.getCount()));
-      output("Value:" + to_string(bits.getValue()));
-      output("bit 4:" + to_string(bits.isSet(4)));   
-      output("bit 2:" + to_string(bits.isSet(2))); 
-      output("bit 3:" + to_string(bits.isSet(3))); 
-
-
-     /* bits.forEach([](bool on, int i){
-        output("index" + to_string(i) + ":" + to_string(on));  
-      }); */
-
-
-      int count = 0;
-      bits.forEach([&](bool on, int i){ 
-          output("index" + to_string(count));
+   bits.forEach([&](bool on, int i){ 
+         // output("index" + to_string(i) + ':' + to_string(on));
+          
+          
+         if(!startbit){(startbit = on);}; 
+         //output("start bit :" + to_string(startbit));
          
+         if((!on) && (startbit)){
+                      
+           runningTotal++; 
+           
+         }
+         else{
+            
+           if(runningTotal>0) { 
+              if (runningTotal > score)
+              {
+                score = runningTotal;
+              }
+           runningTotal = 0;} 
 
+         }
+         
+         //output("score :" + to_string(score));
       });
-
-
-      //output("bit 6:" + to_string(bits.getOn(6)));  exception idx out of bound
-       
-      
-   }
-   catch(const char* msg)
-   {
-       std::cerr << msg << '\n';
-   }
-   
     
+    return score;
 
-}  
-
- 
-   
-
- 
-
-
+}
