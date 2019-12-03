@@ -1,4 +1,4 @@
-
+/* this problem is a bit like bingo, waiting for all your numbers to come out - when you have crossed them all off, you win */
 #include <iostream> /* console stuff */
 #include <cstdlib>  /* standard lib */
 #include <string>
