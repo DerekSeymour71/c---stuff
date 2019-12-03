@@ -23,17 +23,18 @@ void output(string str){
   cout<<str << endl;
 }
 
+//probably a few other checks you can perform, but runs in 0(n)
 int solution(int X, vector<int> &A) {
     output("Solution called"); 
     int result = -1;
     
-    if (X > 0){ 
-      vector<bool> leafs(X,false);  
+    if (X > 0){  //X is the target leaf to jump to, if it's 0 there is no jump 
+      vector<bool> leafs(X,false);  //set all the leafs to false (i.e no leafs have fallen across the river)
       int n = A.size();
-      int leafTotal = 0;
+      int leafTotal = 0;  //tracking how many leafs in sequence up to X have falled so far
 
       for (int i=0; i<n; i++){
-          if (((A[i] > 0) & (A[i] <= X)) & (!leafs[A[i]])){
+          if (((A[i] > 0) & (A[i] <= X)) & (!leafs[A[i]])){  //this line is about testing the array idx, and whether the leaf array value is previously set true
               leafs[A[i]] = true;
               
                output("Marked true : " + to_string(i) + ":" + to_string(A[i])); 
