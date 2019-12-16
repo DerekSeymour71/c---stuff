@@ -1,6 +1,6 @@
 /* codility problem for max counters, currently has a performance problem on max counters, and large numbers of them */
 
-
+/* I've since solved this using prefix sums --- will upload when I get a moment */
 #include <iostream> /* console stuff */
 #include <cstdlib>  /* standard lib */
 #include <string>
