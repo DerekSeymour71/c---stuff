@@ -1,0 +1,58 @@
+// https://app.codility.com/demo/results/trainingD5WU8X-JKV/
+
+//there's a better way to do this with prefix sums, but I can't figure it out, yet. 
+//If you can get a quick way into first index I think that would be good.
+//at the moment, this only passes two performance tests, and fails on the last two big array values
+
+#include <iostream> /* console stuff */
+#include <cstdlib>  /* standard lib */
+#include <string>
+#include <cstring>
+#include <limits>   
+#include <vector>  /*when size of array not known, can use push_back, for example */
+#include <sstream> /* string streams */
+#include <numeric> /* sequences of values */
+#include <ctime>   /* time, baby */
+#include <cmath>   /* numbers, yo */
+#include <assert.h>  /* assertions */
+#include <functional>
+#include <bits/stdc++.h>
+
+using namespace std; 
+
+void output(string str){
+  cout<<str << endl;
+}; 
+
+ 
+
+int solution(int A, int B, int K){
+    
+    //output(to_string(K));
+    int n=0;
+     
+    if (K > B){ 
+         
+        
+        if(A==0){n++;}
+        // output("number divisible = " + to_string(n));   
+        return n;
+    };  //K = 10; B = 9;
+    
+    //if (A<K){A == K;};
+
+     
+     
+    
+    while(A % K !=0){   //find first index;
+      A++;
+    }
+     
+    for (int i = A; i <= B; i+=K){
+       {n++;}
+      // output("index = " + to_string(i)); 
+
+    }
+   // output("number divisible = " + to_string(n));  
+    return n;      
+}   
