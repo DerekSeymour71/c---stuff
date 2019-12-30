@@ -4,6 +4,7 @@
 //If you can get a quick way into first index I think that would be good.
 //at the moment, this only passes two performance tests, and fails on the last two big array values
 //also, missing, you can check for K=1, and return the number of elements. 
+//also, if you have the first index, you don't need a loop to the last index. doh! will update 2mw.
 
 #include <iostream> /* console stuff */
 #include <cstdlib>  /* standard lib */
