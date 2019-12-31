@@ -72,6 +72,8 @@ int solution(int A, int B, int K){
      };
     } 
  
+ 
+    // note, at this point, you don't need to do a loop, as it's just a division, but I'll leave it here as it helps to understand what is happening
      for (unsigned int i = index; i <= count; i+=K){
         //output("i = " + to_string(i)); 
         //output("K = " + to_string(K)); 
