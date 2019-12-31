@@ -1,10 +1,7 @@
-// https://app.codility.com/demo/results/trainingD5WU8X-JKV/
+//codility countdiv solution, 100%
+//https://app.codility.com/demo/results/trainingU763FQ-QA2/
+//I think there must be a better way...however, it still works 100%
 
-//there's a better way to do this with prefix sums, but I can't figure it out, yet. 
-//If you can get a quick way into first index I think that would be good.
-//at the moment, this only passes two performance tests, and fails on the last two big array values
-//also, missing, you can check for K=1, and return the number of elements. 
-//also, if you have the first index, you don't need a loop to the last index. doh! will update 2mw.
 
 #include <iostream> /* console stuff */
 #include <cstdlib>  /* standard lib */
@@ -28,33 +25,63 @@ void output(string str){
 
  
 
+
 int solution(int A, int B, int K){
     
     //output(to_string(K));
-    int n=0;
-     
+    unsigned int n=0;
+    unsigned int index = 0; 
+    unsigned int count = 0;
+   // output("A = " + to_string(A)); 
+  //  output("B = " + to_string(B)); 
+  //  output("K = " + to_string(K)); 
+    
+    
     if (K > B){ 
          
         
         if(A==0){n++;}
-        // output("number divisible = " + to_string(n));   
+         //output("number divisible = " + to_string(n));   
         return n;
     };  //K = 10; B = 9;
     
-    //if (A<K){A == K;};
+   count = B-A;
 
-     
+    if (K==1){
+        n= count+1;
+       // output("K == 1number divisible = " + to_string(n));   
+        return n;
+    };  //if divisible by 1 return count of array elements  
      
     
-    while(A % K !=0){   //find first index;
+    /*while(A % K !=0){   //find first index;
       A++;
-    }
-     
-    for (int i = A; i <= B; i+=K){
+    }*/
+    
+    if (K>=A){
+      index = K-A;   //move directly to the index of A as it will be the same as K
+      if(A==0){n++;} //but note that if 0 then increment total, as zero, div by k counts
+    } 
+    else 
+    {
+     while((A % K !=0) & (A <= B)){   //find first index;
+     // output("index = " + to_string(index)); 
+      index++;
+      A++; 
+     };
+    } 
+ 
+     for (unsigned int i = index; i <= count; i+=K){
+        //output("i = " + to_string(i)); 
+        //output("K = " + to_string(K)); 
+        //output("i+K = " + to_string(i+K)); 
+       
        {n++;}
       // output("index = " + to_string(i)); 
 
-    }
-   // output("number divisible = " + to_string(n));  
+      }
+     
+    
+    //output("number divisible = " + to_string(n));  
     return n;      
-}   
+}  
