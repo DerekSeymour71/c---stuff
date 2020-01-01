@@ -1,6 +1,9 @@
 //A non-empty array A consisting of N integers is given. 
 //The product of triplet (P, Q, R) equates to A[P] * A[Q] * A[R] (0 ≤ P < Q < R < N).
 
+//My first attempt, computer says NO
+//https://app.codility.com/demo/results/training77V83Q-VUQ/
+
 #include <iostream> /* console stuff */
 #include <cstdlib>  /* standard lib */
 #include <string>
@@ -67,3 +70,25 @@ int solution(vector<int> &A){
   return X*Y*Z;
 
 }
+
+
+/* further analysis of problemo, man
+
+five types of possible types of triplets, 3 possible positive + triplets
+
+    positive triplets
+    1   [ 1,   1,   1]     +   (A & B  +)    C +
+    2   [-1,  -1,   1]     +   (A & B  -)    C +
+    3   [-1,   1,  -1]     +   (A or B -)    C -
+
+
+    negative triplets
+    4   [ 1,   1,  -1]     -
+    5   [-1,  -1,  -1]     -
+
+
+  only interested in possible + triplets
+  
+  question becomes, when adding next number into bucket, what would make it bigger and what would make it smaller? (Also, where should it go?)
+
+*/
