@@ -1,7 +1,7 @@
 //A non-empty array A consisting of N integers is given. 
 //The product of triplet (P, Q, R) equates to A[P] * A[Q] * A[R] (0 ≤ P < Q < R < N).
 
-//My first attempt, computer says NO
+//My first attempt, computer says NO. My initital reasoning was just pick the 3 biggest numbers (without sorting)....I knew it would be harder than that :)
 //https://app.codility.com/demo/results/training77V83Q-VUQ/
 
 #include <iostream> /* console stuff */
