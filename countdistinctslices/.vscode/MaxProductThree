@@ -1,0 +1,69 @@
+//A non-empty array A consisting of N integers is given. 
+//The product of triplet (P, Q, R) equates to A[P] * A[Q] * A[R] (0 ≤ P < Q < R < N).
+
+#include <iostream> /* console stuff */
+#include <cstdlib>  /* standard lib */
+#include <string>
+#include <cstring>
+#include <limits>   
+#include <vector>  /*when size of array not known, can use push_back, for example */
+#include <sstream> /* string streams */
+#include <numeric> /* sequences of values */
+#include <ctime>   /* time, baby */
+#include <cmath>   /* numbers, yo */
+#include <assert.h>  /* assertions */
+#include <functional>
+#include <bits/stdc++.h>
+
+using namespace std; 
+
+void output(string str){
+  cout<<str << endl;
+}; 
+
+//N is an integer within the range [3..100,000];
+//each element of array A is an integer within the range [-1,000..1,000].
+
+//this is a sorting problem, but doesn't have to be?
+
+
+//4,6,1,8,9,3
+
+//we can have three buckets, X,Y,Z and 3 indexes noting the order
+//  X = 4
+//  Y = 6   
+//  Z = 1   least idx = 2
+
+//then look at the rest, i.e. 8   where does 8 go? i.e. not in X, as Z is smaller
+
+
+ 
+
+
+int solution(vector<int> &A){
+  int X=-4000;
+  int Y=-3000;
+  int Z=-2000;
+ 
+
+  int Size = A.size();
+ 
+     for (int i = 0; i< Size; i++){ 
+   
+      if ((A[i] > X) & (X<Y) & (X<Z)){ 
+       
+        X = A[i];
+      } 
+      else
+      if ((A[i] > Y) & (Y<Z)){ 
+        Y = A[i];
+      }      
+      else
+      if (A[i] > Z) { 
+        Z = A[i];
+      }
+    }
+
+  return X*Y*Z;
+
+}
