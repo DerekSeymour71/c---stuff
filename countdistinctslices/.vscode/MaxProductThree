@@ -1,6 +1,15 @@
 //A non-empty array A consisting of N integers is given. 
 //The product of triplet (P, Q, R) equates to A[P] * A[Q] * A[R] (0 ≤ P < Q < R < N).
 //current result 66% https://app.codility.com/demo/results/trainingA9PQK7-EBQ/
+
+
+//there's a couple of minor adjustments, I believe, in order to get this to work 100% and also run in O(1) time. Yay! 
+//I need to ensure there is no overflow of calculations. i.e. replace integers with long integers. 
+
+//fix up a few edge cases, and bingo. Solution done, without sorting. Why didn't I sort it? I just wanted to see if it could be done without sorting it.
+
+
+
 #include <iostream> /* console stuff */
 #include <cstdlib>  /* standard lib */
 #include <string>
