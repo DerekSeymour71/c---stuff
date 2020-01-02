@@ -1,9 +1,6 @@
 //A non-empty array A consisting of N integers is given. 
 //The product of triplet (P, Q, R) equates to A[P] * A[Q] * A[R] (0 ≤ P < Q < R < N).
 
-//My first attempt, computer says NO. My initital reasoning was just pick the 3 biggest numbers (without sorting)....I knew it would be harder than that :)
-//https://app.codility.com/demo/results/training77V83Q-VUQ/
-
 #include <iostream> /* console stuff */
 #include <cstdlib>  /* standard lib */
 #include <string>
@@ -25,7 +22,7 @@ void output(string str){
 }; 
 
 //N is an integer within the range [3..100,000];
-//each element of array A is an integer within the range [-1,000..1,000].
+//each element of array A is an integer within the range [−1,000..1,000].
 
 //this is a sorting problem, but doesn't have to be?
 
@@ -45,14 +42,31 @@ void output(string str){
 
 int solution(vector<int> &A){
   int X=-4000;
-  int Y=-3000;
-  int Z=-2000;
- 
-
+  int Y=-4000;
+  int Z=-4000;
+  int max=-4000;
+  int positive_product=0;
+  int negative_product=0;
+  int MaxNegativeA=0;
+  int MaxNegativeB=0;  
   int Size = A.size();
  
      for (int i = 0; i< Size; i++){ 
    
+      if (A[i] < 0) { //put it into the negative buckets
+      
+        if ((A[i]<MaxNegativeA) || (A[i] < MaxNegativeB)) { 
+         
+          if ((A[i] < MaxNegativeA) & (MaxNegativeA > MaxNegativeB)) { 
+            MaxNegativeA= A[i];
+          }
+          else { 
+           MaxNegativeB = A[i];
+          }
+           
+        }
+      }
+      else
       if ((A[i] > X) & (X<Y) & (X<Z)){ 
        
         X = A[i];
@@ -65,7 +79,25 @@ int solution(vector<int> &A){
       if (A[i] > Z) { 
         Z = A[i];
       }
+      if (A[i] > max){ max = A[i];}
     }
+
+   positive_product = X * Y * Z;
+
+     if ((MaxNegativeA < 0) & (MaxNegativeB < 0)) { 
+      
+       negative_product = max * MaxNegativeA * MaxNegativeB;
+     } 
+
+     if (negative_product > positive_product){ 
+       return negative_product;
+     }
+     else
+     { 
+       return positive_product;
+     }
+   
+
 
   return X*Y*Z;
 
