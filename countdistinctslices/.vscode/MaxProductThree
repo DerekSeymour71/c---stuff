@@ -1,6 +1,6 @@
 //A non-empty array A consisting of N integers is given. 
 //The product of triplet (P, Q, R) equates to A[P] * A[Q] * A[R] (0 ≤ P < Q < R < N).
-
+//current result 66% https://app.codility.com/demo/results/trainingA9PQK7-EBQ/
 #include <iostream> /* console stuff */
 #include <cstdlib>  /* standard lib */
 #include <string>
