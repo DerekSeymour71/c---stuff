@@ -1,4 +1,5 @@
 /* this problem is a bit like bingo, waiting for all your numbers to come out - when you have crossed them all off, you win */
+/* results https://app.codility.com/demo/results/training7DK4W2-6QS/
 #include <iostream> /* console stuff */
 #include <cstdlib>  /* standard lib */
 #include <string>
@@ -25,7 +26,7 @@ void output(string str){
 
 //probably a few other checks you can perform, but runs in 0(n)
 int solution(int X, vector<int> &A) {
-    output("Solution called"); 
+   // output("Solution called"); 
     int result = -1;
     
     if (X > 0){  //X is the target leaf to jump to, if it's 0 there is no jump 
@@ -37,7 +38,7 @@ int solution(int X, vector<int> &A) {
           if (((A[i] > 0) & (A[i] <= X)) & (!leafs[A[i]])){  //this line is about testing the array idx, and whether the leaf array value is previously set true
               leafs[A[i]] = true;
               
-               output("Marked true : " + to_string(i) + ":" + to_string(A[i])); 
+               //output("Marked true : " + to_string(i) + ":" + to_string(A[i])); 
               
               leafTotal ++;
           } 
