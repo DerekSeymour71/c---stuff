@@ -1,8 +1,4 @@
 
-//A non-empty array A consisting of N integers is given. 
-//The product of triplet (P, Q, R) equates to A[P] * A[Q] * A[R] (0 ≤ P < Q < R < N).
-
-#include <iostream> /* console stuff */
 #include <cstdlib>  /* standard lib */
 #include <string>
 #include <cstring>
@@ -22,141 +18,97 @@ void output(string str){
   cout<<str << endl;
 }; 
 
-//N is an integer within the range [3..100,000];
-//each element of array A is an integer within the range [−1,000..1,000].
-
-//this is a sorting problem, but doesn't have to be?
-
-
-//4,6,1,8,9,3
-
-//we can have three buckets, X,Y,Z and 3 indexes noting the order
-//  X = 4
-//  Y = 6   
-//  Z = 1   least idx = 2
-
-//then look at the rest, i.e. 8   where does 8 go? i.e. not in X, as Z is smaller
-
-
  
 
+long int MinThree(long long int A, long long int B, long long int C){
+  return  min(A,min(B,C));
+}
 
-int solution(vector<int> &A){
-  int X= 0;
-  int Y= 0;
-  int Z= 0;
-  long long int maxPositive = 0;
-  long long int maxNegative = 0;
-  long long int positive_product=0;
-  long long int negative_product=0;
-  long long int all_Negative_product=0;
-  long long int MaxNegativeA=0;
-  long long int MaxNegativeB=0; 
-  long long int MaxNegativeC= 0; 
-  long long int size = A.size();
-  long long int result = 0;
-  
-
-  if (size == 3) { 
-   
-    return   A[0] * A[1] * A[2];
-  }
-  else
-  { 
-
-
-  for (int i = 0; i < size; i++){ 
-   
-     if ((A[i]< MaxNegativeA) || (A[i] < MaxNegativeB)) 
-        {    //work out where to put negative values in correct bucket
-      
-       if ((A[i] < MaxNegativeA) & (MaxNegativeB < MaxNegativeA)) { 
-         MaxNegativeA= A[i];}
-       else
-         {MaxNegativeB = A[i];}
-     }
-     else if (A[i] < MaxNegativeC)   
-     { 
-       MaxNegativeC = A[i];
-     }
-
-                             //work out positive bucket
-     if ((A[i] > X) & (X<Y) & (X<Z)) { 
-      
-        X = A[i];
-     }
-     else if ((A[i] > Y) & (Y<Z)) { 
-      
-       Y = A[i];
-     }
-     else if (A[i] > Z)  
-     { 
-       Z = A[i];
-     } 
-
-
-     if (A[i] > maxPositive) { 
-       maxPositive = A[i];}  //keep a running total of the current max -- for later use with - numbers
-     //else if
-       //(A[i] < MaxNegative) then MaxNegative := A[i]; //keep a running total of the current max -- for later use with - numbers
-
-     positive_product = X * Y * Z;
-   if ((MaxNegativeA < 0) & (MaxNegativeB < 0)) { 
-      
-     negative_product = maxPositive * MaxNegativeA * MaxNegativeB;
-   }
-   all_Negative_product =  MaxNegativeA * MaxNegativeB * MaxNegativeC;
-
-
-  
-     
-   if ((positive_product > 0) || (negative_product > 0)) { 
-      
-     if (negative_product > positive_product)  { 
-       result = negative_product;}
-     else
-       result = positive_product;
-   }
-   else
-   { 
-      
-     result =  all_Negative_product;
-   }
-
-  }
-
-
-   } 
-   
-   
-  return result; 
+long int MaxThree(long long int A, long long int B, long long int C){
+  return  max(A,max(B,C));
 }
 
 
-int main(){
-   //negative
+ void SetMaxThree(long long int &A, long long int &B, long long int &C, long long int Value ){ 
+    long int min = MinThree(A,B,C);
+    if ((min == A) & (Value > A)){ 
+       A = Value;}
+    else if ((min ==B) & (Value > B))
+      B = Value; 
+    else if ((min==C) & (Value > C))
+      C= Value;  
+ }
+
+  
+
+void SetMinThree(long long int &A, long long int &B, long long int &C, long long int Value ){ 
+    long int max = MaxThree(A,B,C);
+    if ((max == A) & (Value < A)){ 
+       A = Value;}
+    else if ((max ==B) & (Value < B))
+      B = Value; 
+    else if ((max==C) & (Value < C))
+      C= Value;  
+ }
+
+
+ long long int MiddleThree(long long int X,long long int Y, long long int Z) 
+ {
     
-   vector<int>  A =  {0, 0, 0, 0, 0,0};           // 0    //all zero
-    vector<int> B =  {-5, 5, -5, 4,3,4};          // 125   //mix of negative and positive
-    vector<int> C =  {-5, -5, -5, -5,-5,-5};      // -125  //all negative
-    vector<int> D =  {-5, -5, -5};                // -125  //negative triplet
-    vector<int> E =  {-5, -5, 5};                 // 125   //1 positive, and 2 negatives
-    vector<int> F =  {-5, 5, 5};                  // -125  //2 positives 1 negative
-    vector<int> G =  {-5, 5, 5, 5};               // 125   //1 negative, 3 positve
-    vector<int> H =  { 5,4,-3,-2};                 // 30   //mix
-    vector<int> I =  {-10, -2, -4};               // -80   //small triplet
-    vector<int> J =  {-5, -5, 5,5};               // 125   //two negative, two positives
-    vector<int> K =  {-5, -5,-4,10,-2,-3,-5,-6,-11,-12};               // 1320   //1 positive, rest negative
-    vector<int> L =  {2, 4,4,10,2,3,5,6,11,12};               // 1320   //all positive
+   return max(min(X,Y), min(max(X,Y),Z));
+ }  
+  
+ 
 
-
-   //positive
-   /*
-   vector<int> A = {0, 1 ,1, 1, 1};     
-   vector<int> B = {0, 0 ,0, 0, 0};     
-   vector<int> C = {0, 0 ,0, 0, 1};     
-   vector<int> D = {2, 2 ,0, 0, 5};     */
+int solution(vector<int> &A){
+  long long int X,Y,Z; //max three
+  long long int P,Q,R; //min three;
+  long long int MinMaxA,MinMaxB;
+  long long int i;
+  long long int size;
+  long long int SumA,SumB;
    
+    X = A[0];
+    Y = A[1];
+    Z = A[2];
+    P = X;
+    Q = Y;
+    R = Z;
+    size = A.size();
+
+    MinMaxA = min(P,min(Q,R));
+    MinMaxB = MiddleThree(P,Q,R);
+    for (i = 3; i<size; i++){ 
+      SetMaxThree(X,Y,Z,A[i]);
+      SetMinThree(P,Q,R,A[i]);
+      MinMaxA = min(P,min(Q,R));
+      MinMaxB = MiddleThree(P,Q,R);
+    } 
+    SumA = X*Y*Z;
+    SumB = MaxThree(X,Y,Z) * MinMaxA * MinMaxB;
+ 
+    return max(SumA,SumB);  
+   
+}
+
+int main(){
+   vector<int>  A = {0, 0, 0, 0, 0,0};           // 0    //all zero
+   vector<int>  B= {-5, 5, -5, 4,3,4};          // 125   //mix of negative and positive
+   vector<int> C  = {-5, -5, -5, -5,-5,-5};      // -125  //all negative
+   vector<int> D = {-5, -5, -5};                // -125  //negative triplet
+   vector<int> E  = {-5, -5, 5};                 // 125   //1 positive, and 2 negatives
+   vector<int> F  = {-5, 5, 5};                  // -125  //2 positives 1 negative
+  vector<int>  G = { -5, 5, 5, 5};               // 125   //1 negative, 3 positve
+  vector<int>  H  = {5,4,-3,-2};                 // 30   //mix
+   vector<int> I  = {-10, -2, -4};               // -80   //small triplet
+   vector<int> J  = {-5, -5, 5,5};               // 125   //two negative, two positives
+   vector<int> K  = {-5, -5,-4,10,-2,-3,-5,-6,-11,-12};               // 1320   //1 positive, rest negative
+   vector<int> L  = {2, 4,4,10,2,3,5,6,11,12};               // 1320   //all positive
+   vector<int> M = {-5, -6, -4, -7, -10};              //-120
+   vector<int> N  = {-4, -6, 3, 4, 5};                 //120
+   vector<int> O  = {1000, 1000, 1000};
+
+  
    output("A sum = "  + to_string(solution(A)));
    output("B sum = "  + to_string(solution(B)));
    output("C sum = "  + to_string(solution(C)));
@@ -169,27 +121,8 @@ int main(){
    output("J sum = "  + to_string(solution(J)));
    output("K sum = "  + to_string(solution(K)));
    output("L sum = "  + to_string(solution(L)));
-  // output("M sum = "  + to_string(solution(M))); */
+   output("M sum = "  + to_string(solution(M)));
+   output("N sum = "  + to_string(solution(N)));
+   output("O sum = "  + to_string(solution(O)));
 }
-
-
-/* further analysis of problemo, man
-
-five types of possible types of triplets, 3 possible positive + triplets
-
-    positive triplets
-    1   [ 1,   1,   1]     +   (A & B  +)    C +
-    2   [-1,  -1,   1]     +   (A & B  -)    C +
-    3   [-1,   1,  -1]     +   (A or B -)    C -
-
-
-    negative triplets
-    4   [ 1,   1,  -1]     -
-    5   [-1,  -1,  -1]     -
-
-
-  only interested in possible + triplets
-  
-  question becomes, when adding next number into bucket, what would make it bigger and what would make it smaller? (Also, where should it go?)
-
-*/
+ 
