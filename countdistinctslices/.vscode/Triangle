@@ -1,4 +1,4 @@
-// test results https://app.codility.com/demo/results/trainingE2PB5A-8UX/
+// test results https://app.codility.com/demo/results/trainingZN9U6X-AZG/
 /*An array A consisting of N integers is given. A triplet (P, Q, R) is triangular if 0 ≤ P < Q < R < N and:
 
 10     = 2      = 5            5   10   2,     2   5  10
@@ -68,7 +68,7 @@ bool IsTriangle(long long int P, long long int Q, long long int R){
 int solution(vector<int> &A){
   long int size = A.size();
   long int i; 
-  if (size==3) return IsTriangle(A[0],A[1],A[2]);  //edge case of 3 elements
+  //if (size==3) return IsTriangle(A[0],A[1],A[2]);  //edge case of 3 elements. removed as causes buffer overflow with last edge case
   
   sort(A.begin(),A.end()); //sprt from 3 onwards
   for(i=0;i<size-2;i++){
