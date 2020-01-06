@@ -1,3 +1,4 @@
+// test results https://app.codility.com/demo/results/trainingE2PB5A-8UX/
 /*An array A consisting of N integers is given. A triplet (P, Q, R) is triangular if 0 ≤ P < Q < R < N and:
 
 10     = 2      = 5            5   10   2,     2   5  10
