@@ -1,0 +1,80 @@
+/*An array A consisting of N integers is given. A triplet (P, Q, R) is triangular if 0 ≤ P < Q < R < N and:
+
+10     = 2      = 5
+
+A[P] + A[Q] > A[R],
+A[P] + A[R] > A[Q].
+A[Q] + A[R] > A[P],
+ 
+P  conditions indexing
+ 
+ (A[i] + A[i+1] > A[i+2])  & A[i] + A[i+2] > A[i+1];
+
+ Q conditions indexing
+  
+ A[i+1] + A[i+2] > A[i]
+
+  
+ A[0] = 10    A[1] = 2    A[2] = 5
+  A[3] = 1     A[4] = 8    A[5] = 20
+  
+  if I sorted this, I would get 
+  
+  1 2 5 8 10 20
+  
+  then if I inremented the index of Q....?
+  
+  I,Q index
+  
+  J= i
+   (A[i] + A[i+1] > A[i+2])  & A[i] + A[i+2] > A[i+1];
+
+#include <iostream> /* console stuff */
+#include <cstdlib>  /* standard lib */
+#include <string>
+#include <cstring>
+#include <limits>   
+#include <vector>  /*when size of array not known, can use push_back, for example */
+#include <sstream> /* string streams */
+#include <numeric> /* sequences of values */
+#include <ctime>   /* time, baby */
+#include <cmath>   /* numbers, yo */
+#include <assert.h>  /* assertions */
+#include <functional>
+#include <bits/stdc++.h>
+
+using namespace std; 
+
+void output(string str){
+  cout<<str << endl;
+}; 
+
+ 
+bool IsTriangle(long int P, long int Q, long int R){ 
+  //return 
+}
+
+
+int solution(vector<int> &A){
+  long int P,Q,R;
+  long int size = A.size();
+  long int i;
+  bool triangle;
+
+  bool cond1,cond2,cond3;
+
+  if (size=3) return IsTriangle(A[0],A[1],A[2]);  //edge case of 3 elements
+   
+  for(i=3;i<size;i++){
+     
+
+  }
+
+  return triangle;
+
+}
+
+
+int main(){
+
+}
