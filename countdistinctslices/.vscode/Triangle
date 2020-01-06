@@ -1,9 +1,15 @@
 /*An array A consisting of N integers is given. A triplet (P, Q, R) is triangular if 0 ≤ P < Q < R < N and:
 
-10     = 2      = 5
+10     = 2      = 5            5   10   2,     2   5  10
+
+
+1,2,3  = triangle? 
+
 
 A[P] + A[Q] > A[R],
 A[P] + A[R] > A[Q].
+
+
 A[Q] + A[R] > A[P],
  
 P  conditions indexing
@@ -15,31 +21,22 @@ P  conditions indexing
  A[i+1] + A[i+2] > A[i]
 
   
- A[0] = 10    A[1] = 2    A[2] = 5
-  A[3] = 1     A[4] = 8    A[5] = 20
+ given a sum, what sums make a triangle? 
   
-  if I sorted this, I would get 
-  
-  1 2 5 8 10 20
-  
-  then if I inremented the index of Q....?
-  
-  I,Q index
-  
-  J= i
-   (A[i] + A[i+1] > A[i+2])  & A[i] + A[i+2] > A[i+1];
-   
-   
-   if you sort it
-   
-   i.e. 
-   
-   2,3,5  not a triangle    2,3,4 = triangle
-   
-   A,B,C
-   
-   A+B < C
-   
+ The Triangle Inequality Theorem states that the sum of any 2 sides of a triangle must be greater than the measure of the third side
+
+ A = 1
+ B = 2
+ C = 3 
+
+A[P] + A[Q] > A[R],
+A[P] + A[R] > A[Q].
+
+
+A[Q] + A[R] > A[P],
+
+
+
 
 #include <iostream> /* console stuff */
 #include <cstdlib>  /* standard lib */
@@ -62,31 +59,33 @@ void output(string str){
 }; 
 
  
-bool IsTriangle(long int P, long int Q, long int R){ 
-  //return 
+bool IsTriangle(long long int P, long long int Q, long long int R){ 
+  return (P+Q) > R;
 }
 
 
 int solution(vector<int> &A){
-  long int P,Q,R;
   long int size = A.size();
-  long int i;
-  bool triangle;
-
-  bool cond1,cond2,cond3;
-
-  if (size=3) return IsTriangle(A[0],A[1],A[2]);  //edge case of 3 elements
-   
-  for(i=3;i<size;i++){
-     
+  long int i; 
+  if (size==3) return IsTriangle(A[0],A[1],A[2]);  //edge case of 3 elements
+  
+  sort(A.begin(),A.end()); //sprt from 3 onwards
+  for(i=0;i<size-2;i++){
+     if (IsTriangle(A[i],A[i+1],A[i+2])) return 1;
 
   }
 
-  return triangle;
+  return 0; //no triangle found
 
 }
 
 
 int main(){
-
+   vector<int>  A = {10,2 ,5, 1 ,8,20};
+   vector<int>  B = {10, 50, 5, 1};  //1,5,10,50
+   vector<int>  C = {10, -2147483648, -2147483648};
+   output("triangle : " + to_string(solution(A)));
+   output("triangle : " + to_string(solution(B)));
+   output("triangle : " + to_string(solution(C)));
+   
 }
