@@ -28,6 +28,18 @@ P  conditions indexing
   
   J= i
    (A[i] + A[i+1] > A[i+2])  & A[i] + A[i+2] > A[i+1];
+   
+   
+   if you sort it
+   
+   i.e. 
+   
+   2,3,5  not a triangle    2,3,4 = triangle
+   
+   A,B,C
+   
+   A+B < C
+   
 
 #include <iostream> /* console stuff */
 #include <cstdlib>  /* standard lib */
