@@ -17,3 +17,69 @@ The figure below shows discs drawn for N = 6 and A as follows:
   My initial thought is, visually, the solution looks pretty simple. However, as per normal, the explanation is not exactly in simple english.
   
   Once you draw this, it looks relatively easy to work it out. 
+  
+  
+ so, here's my further analysis of the problem.  Each circle's center point is the index...sigh. So A[0] starts at zero, 
+ has a radius of 1, so it goes from -1 to 1. A[1] starts at 1, has a radius of 5, so it goes from -4 to 6. 
+ 
+  
+
+ 
+  A[0] = 1            
+  A[1] = 5                               
+  A[2] = 2        
+  A[3] = 1        
+  A[4] = 4        
+  A[5] = 0  
+  
+   0,  1   =   0, 1 
+   1,  5   =   1, 6
+   2,  2   =   2, 4
+   3,  1   =   3, 4
+   4,  4   =   4, 8
+   5,  0   =   5, 5
+
+
+visual representation of problem
+
+      -6    -5    -4    -3    -2    -1    0    1    2    3   4   5   6   7   8
+ A                                   {         }               
+ B                 {                                                 }
+ C                                        {                  }
+ D                                                   {       }
+ E                                        {                                 }
+ F                                                                {}
+
+
+   
+   sorted from smallest to largest
+   
+   -6    -5    -4    -3    -2    -1    0    1    2    3   4   5   6   7   8
+  
+   
+  
+ 
+ F                                                                {}
+ D                                                   {       }
+ A                                   {         }               
+ C                                        {                  }
+ E                                        {                                 }
+ B                 {                                                 }
+ 
+
+  
+
+ 
+ nothing is really jumping out at me at the moment, whereby I won't need to do a brute-force on it (which will fail the 
+ performance requirements, so no point )
+ 
+ 
+ maybe if you have the smallest index -4, and the largest index 8, and you count the left brackets. What would that achieve?
+ get the biggest ciricle i.e. that would be -4 to 8 encompassing everything. Then decrease it's size and count in between.
+ 
+ Honestly, no idea right now. just guessing.
+ 
+   
+
+*/  
+  
