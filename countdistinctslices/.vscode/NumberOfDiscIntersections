@@ -90,6 +90,21 @@ visual representation of problem
 
 
  count the elipse + sum of circles?
+ 
+ 
+ 
+A [1, 5, 2, 1, 4, 0] = 11
+B [1, 1, 1, 1, 1, 0] = 8
+C [1, 1, 1, 0, 1, 0] = 7
+D [1, 1, 0, 1, 1, 0] = 6 
+
+There is some kind of pattern here maybe....i.e. A-B (4-1) = 3, as I move zero, going left, it decreases the amount of intersections
+
+And if so, maybe what you can do is concoct some kind of bitshifting algorithm.
+
+but honestly, still struggling with this one.
+
+
 
 */  
   
