@@ -79,7 +79,15 @@ visual representation of problem
  
  Honestly, no idea right now. just guessing.
  
-   
+ intersections -- notice if you draw it like this. 2 intersections, doesn't matter which brackets belong to which circle.
+ 
+ 1  [ [] ]        
+  
+ 2  [ [  ] [    ] ]
+
+ 2  [ [ [  ] ] ]   
+
+
 
 */  
   
