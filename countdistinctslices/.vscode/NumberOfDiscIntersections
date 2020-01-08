@@ -110,5 +110,11 @@ ANother example,
 [1, 1, 1, 0, 1, 0] = 7
 [1, 1, 1, 1, 1, 0] = 8
 
+one question I'm asking myself, is if 
+A [1, 5, 2, 1, 4, 0] = 11
+B [1, 1, 1, 1, 1, 0] = 8
+
+then what would happen if I converted A to binary in some fashion? After working out the binary for just 1,0s combos
+
 */  
   
