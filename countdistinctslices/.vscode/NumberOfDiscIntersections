@@ -147,7 +147,23 @@ which becomes
 1   1   1
 
 
+which in my look up table become 3, which is correct.
 
 
+ok, what about 7,4,5
+
+1,1,1
+
+4,5,7
+
+sorted = 1,1,1
+
+16,10,5
+
+16 = 10 + 6 = 
+
+nah, brain malfunction....
+
+I'll come back to this line of thought.
 */  
   
