@@ -1,0 +1,62 @@
+#include <iostream> /* console stuff */
+#include <cstdlib>  /* standard lib */
+#include <string>
+#include <cstring>
+
+#include <limits>   
+#include <vector>  /*when size of array not known, can use push_back, for example */
+#include <sstream> /* string streams */
+#include <numeric> /* sequences of values */
+#include <ctime>   /* time, baby */
+#include <cmath>   /* numbers, yo */
+#include <assert.h>  /* assertions */
+#include <functional>
+
+using namespace std;
+
+
+void output(string str){
+  cout<<str << endl;
+}
+
+
+//string stack
+class Stack{
+   private:
+      vector<char> fItems;  
+
+   protected:
+       
+     
+
+   public:
+
+    //constructor
+    Stack(){
+         
+    }
+
+    //count of stack
+    long Count(){
+        return fItems.size(); 
+      } 
+
+    //put an item
+    Push(char Letter){
+
+    }
+
+    //remove item
+    char Pop(){
+
+    }
+
+    //what's on top of stack?
+    char Peek(){
+
+    }
+};
+
+int main(){
+  Stack  stack(); 
+}
